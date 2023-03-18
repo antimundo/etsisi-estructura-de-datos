@@ -17,7 +17,23 @@ public class UtilizacionPila {
      * @return verdadero si las etiquetas están balanceadas, falso en caso contrario
      */
     public boolean comprobarTexto (ListaEtiquetas lista, String texto) {
-        return false;
+        Pila miPila = new Pila();
+        String[] elementos = texto.split(" ");
+        boolean control = true;
+        for (int i = 0; i < elementos.length && control; i++){
+            if (lista.esApertura(elementos[i])){
+                miPila.apilar(elementos[i]);
+            }
+            else if (lista.esCierre(elementos[i])){
+                String etiqueta = miPila.desapilar();
+                if(!lista.emparejados(etiqueta, elementos[i])){
+                    control = false;
+                    System.out.println("En la pila quedan elementos:");
+                    mostrarInverso(miPila);
+                }
+            }
+        }
+        return control;
     }
 
     /**

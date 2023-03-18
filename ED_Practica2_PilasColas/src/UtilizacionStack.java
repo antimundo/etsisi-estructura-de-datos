@@ -16,18 +16,46 @@ public class UtilizacionStack {
      * @return verdadero si las etiquetas están balanceadas, falso en caso contrario
      */
     public boolean comprobarLineaStack (ListaEtiquetas lista, String texto) {
-        return false;
+        Stack<String> miStack = new Stack<String>();
+        String[] elementos = texto.split(" ");
+        boolean control = true;
+        for (int i = 0; i < elementos.length && control; i++){
+            if (lista.esApertura(elementos[i])){
+                miStack.push(elementos[i]);
+            }
+            else if (lista.esCierre(elementos[i])){
+                String etiqueta = miStack.pop();
+                if(!lista.emparejados(etiqueta, elementos[i])){
+                    control = false;
+                    System.out.println("En la pila quedan elementos:");
+                    mostrarInverso(miStack);
+                }
+            }
+        }
+        return control;
     }
     /**
      * Método que muestra el contenido de la pila
      * @param pila la pila que deseamos mostrar
      */
     public void mostrar (Stack <String> pila)  {
+        if (!pila.empty()){
+            String thisDato = pila.pop();
+            System.out.println(thisDato);
+            mostrar(pila);
+            pila.push(thisDato);
+        }
     }
     /**
      * Método que muestra el contenido de la pila invertido (el fondo arriba y la cima abajo)
      * @param pila la pila que deseamos mostrar
      */
     public void mostrarInverso (Stack <String> pila) {
+        if (!pila.empty()){
+            String thisDato = pila.pop();
+            mostrarInverso(pila);
+            System.out.println(thisDato);
+            pila.push(thisDato);
+        }
     }
 }
