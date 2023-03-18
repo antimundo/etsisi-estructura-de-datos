@@ -36,7 +36,7 @@ public class Pila {
      * Método que inserta un nuevo elemento en la cima de la pila
      * @param dato el elemento a insertar
      */
-    public void apilar(int dato) {
+    public void apilar(String dato) {
         Nodo nuevo = new Nodo(dato, cima);
         cima = nuevo;
         numElementos++;
@@ -46,8 +46,8 @@ public class Pila {
      * Método que extrae de la pila el elemento que aparece en la cima
      * @return el primer elemento de la pila. Devuelve una cadena vacía si la cola está vacía
      */
-    public int desapilar() {
-        int valor = -9999;
+    public String desapilar() {
+        String valor = "-9999";
         if (this.vacia()) {
             System.out.println("Error, la pila está vacía");
         } else {

@@ -39,7 +39,7 @@ public class Cola {
      * Método que inserta un nuevo elemento al final de la cola
      * @param dato el elemento a insertar
      */
-    public void encolar(int dato) {
+    public void encolar(String dato) {
         Nodo nuevo;
         nuevo = new Nodo(dato, null);
         if (principio != null)
@@ -53,9 +53,9 @@ public class Cola {
      * Método que extrae de la cola el elemento que aparece al principio
      * @return el primer elemento de la cola. Devuelve una cadena vacía si la cola está vacía
      */
-    public int desencolar() {
+    public String desencolar() {
         Nodo nodo;
-        int resultado = -9999;
+        String resultado = "-9999";
 
         if (principio == null)
             System.out.println("Error, la cola está vacía");
