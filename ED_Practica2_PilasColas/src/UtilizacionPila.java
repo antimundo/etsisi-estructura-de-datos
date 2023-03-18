@@ -25,6 +25,12 @@ public class UtilizacionPila {
      * @param pila la pila que deseamos mostrar
      */
     public void mostrarInverso(Pila pila) {
-     }
+        if (!pila.vacia()){
+            String thisDato = pila.desapilar();
+            mostrarInverso(pila);
+            System.out.println(thisDato);
+            pila.apilar(thisDato);
+        }
+    }
 }
 
