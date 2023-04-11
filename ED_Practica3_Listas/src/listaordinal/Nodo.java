@@ -2,10 +2,10 @@ package listaordinal;
 
 public class Nodo {
 
-    private int dato;
+    private Producto dato;
     private Nodo siguiente;
 
-    public Nodo(int dato, Nodo siguiente) {
+    public Nodo(Producto dato, Nodo siguiente) {
         this.dato = dato;
         this.siguiente = siguiente;
     }
@@ -18,11 +18,11 @@ public class Nodo {
         this.siguiente = siguiente;
     }
 
-    public int getDato() {
+    public Producto getDato() {
         return dato;
     }
 
-    public void setDato(int dato) {
+    public void setDato(Producto dato) {
         this.dato = dato;
     }
 }

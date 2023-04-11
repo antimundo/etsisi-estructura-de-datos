@@ -11,8 +11,8 @@ public class Iterador {
         return actual != null;
     }
 
-    public int next() {
-        int resultado = actual.getDato();
+    public Producto next() {
+        Producto resultado = actual.getDato();
         actual = actual.getSiguiente();
         return resultado;
     }

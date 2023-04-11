@@ -17,7 +17,7 @@ public class ListaOrdinal {
     /**
      * Inserta el dato en la última posición de la lista
      */
-    public void insertar(int dato) {
+    public void insertar(Producto dato) {
         // Crear un nodo nuevo
         Nodo nuevo = new Nodo(dato, null);
         // Insertar el nodo al final de la lista enlazada
@@ -35,7 +35,7 @@ public class ListaOrdinal {
      * Busca el dato que ocupa la posición recibida como parámetro,
      * Si no existe esa posición, el resultado es impredecible.
      */
-    public int getElemento(int posicion) {
+    public Producto getElemento(int posicion) {
         // Avanzar en la lista tantos elementos como el parámetro posicion
         Nodo actual = inicio;   // referencia auxiliar para recorrer la lista
         for (int i = 0; i < posicion; i++) {
@@ -48,10 +48,10 @@ public class ListaOrdinal {
      * Borra el primer elemento de la lista cuyo dato coincide con el
      * parámetro recibido, si existe.
      */
-    public boolean borrar(int dato) {
+    public boolean borrar(Producto dato) {
         Nodo actual = inicio;
         Nodo anterior = null;
-        while (actual != null && actual.getDato() != dato) {
+        while (actual != null && !actual.getDato().equals(dato)) {
             anterior = actual;
             actual = actual.getSiguiente();
         }
@@ -75,10 +75,10 @@ public class ListaOrdinal {
      * Devuelve la primera posición en la que se encuentra el dato,
      * en caso de existir. En caso contrario, devuelve -1
      */
-    public int posicion(int dato) {
+    public int posicion(Producto dato) {
         Nodo actual = inicio;
         int pos = 0;
-        while (actual != null && actual.getDato() != dato) {
+        while (actual != null && !actual.getDato().equals(dato)) {
             actual = actual.getSiguiente();
             pos++;
         }
@@ -92,7 +92,7 @@ public class ListaOrdinal {
     /**
      * Determina si el dato recibido como parámetro existe en la lista.
      */
-    public boolean contiene(int dato) {
+    public boolean contiene(Producto dato) {
         return this.posicion(dato) >= 0;
     }
 
@@ -110,7 +110,7 @@ public class ListaOrdinal {
         } else {
             Nodo actual = inicio;
             while (actual != null) {
-                System.out.println(actual.getDato());
+                actual.getDato().mostrar();
                 actual = actual.getSiguiente();
             }
             System.out.println();
