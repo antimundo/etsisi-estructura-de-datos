@@ -84,7 +84,7 @@ public class Conjunto {
 
     public void mostrar() {
         if (this.vacio()) {
-            System.out.println ("Conjunto vacío");
+            System.out.println("Conjunto vacío");
         } else {
             System.out.print("[ " + inicio.getDato());
             Nodo actual = inicio.getSiguiente();
@@ -97,10 +97,17 @@ public class Conjunto {
     }
 
 
-
     public int[] toArray() {
-        // Completar
-        return null;   // Línea puesta para evitar error. Eliminarla al codificar el método
+        Nodo actual = inicio;
+        int[] resultado = new int[getNumElementos()];
+        int i = 0;
+
+        while (actual != null) {
+            resultado[i] = actual.getDato();
+            actual = actual.getSiguiente();
+            i++;
+        }
+        return resultado;
     }
 
 
@@ -110,16 +117,34 @@ public class Conjunto {
     }
 
     public Conjunto subconjunto(int inferior, int superior) {
-        // Completar
-        return null;   // Línea puesta para evitar error. Eliminarla al codificar el método
+        Conjunto subconjunto = new Conjunto();
+        Nodo actual = inicio;
+        while (actual != null) {
+            if (actual.getDato() >= inferior && actual.getDato() <= superior) {
+                subconjunto.insertar(actual.getDato());
+                actual = actual.getSiguiente();
+            } else {
+                actual = actual.getSiguiente();
+            }
+        }
+        return subconjunto;
     }
 
     public boolean equals(Conjunto conjunto) {
-        // Completar
-        return true;   // Línea puesta para evitar error. Eliminarla al codificar el método
+        boolean resultado = false;
+        Nodo actual1 = conjunto.inicio;
+        Nodo actual2 = inicio;
+        while (actual1 != null && actual2 != null) {
+            if (actual1.getDato() == actual2.getDato()) {
+                actual1 = actual1.getSiguiente();
+                actual2 = actual2.getSiguiente();
+            }
+        }
+        if (actual1 == null && actual2 == null) {
+            resultado = true;
+        }
+        return resultado;
     }
-
-
 
 
 }
