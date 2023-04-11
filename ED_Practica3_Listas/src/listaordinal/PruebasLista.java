@@ -1,5 +1,8 @@
 package listaordinal;
 
+import java.util.LinkedList;
+import java.util.Iterator;
+
 public class PruebasLista {
     public static void main(String[] args) {
         // Introducir aquí las pruebas pedidas en la práctica
@@ -41,6 +44,27 @@ public class PruebasLista {
         System.out.println("Se han obtenido " + lista.getNumElementos() + " productos con un precio mayor a 100 euros por unidad.");
         lista.mostrar();
 
-        System.out.println("\n# Mis tests");
+        System.out.println("\n# Pruebas de la biblioteca LikedList");
+        FacturaBib facturaBib = new FacturaBib("888888888A","08/08/2008");
+        Producto armario = new Producto("Armario", 385f, 5);
+        Producto cama = new Producto("Cama", 255f, 3);
+        Producto cama2 = new Producto("Cama", 255f, 2);
+        Producto armario2 = new Producto("Armario", 385f, 1);
+
+        facturaBib.añadirProducto(armario);
+        facturaBib.añadirProducto(cama);
+        facturaBib.añadirProducto(cama2);
+        facturaBib.eliminarProducto(armario2);
+
+        facturaBib.mostrar();
+        LinkedList<Producto> linkedList;
+        linkedList = facturaBib.mayoresPrecios(250f);
+        System.out.println("Se han obtenido " + linkedList.size() + " productos con un precio mayor a 250 euros la unidad: \n");
+
+        Iterator<Producto> iterator = linkedList.iterator();
+        while(iterator.hasNext()){
+            Producto show = iterator.next();
+            show.mostrar();
+        }
     }
 }

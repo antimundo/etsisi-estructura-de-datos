@@ -1,15 +1,20 @@
 package listaordinal;
 
-public class Factura {
+import listaordinal.Producto;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
+public class FacturaBib {
     private String dni;
     private String fecha;
-    private ListaOrdinal listaProductos;
+    private LinkedList<Producto> listaProductos;
     private boolean cobrada;
 
-    public Factura(String dni, String fecha) {
+    public FacturaBib(String dni, String fecha) {
         this.dni = dni;
         this.fecha = fecha;
-        listaProductos = new ListaOrdinal();
+        listaProductos = new LinkedList<Producto>();
         cobrada = false;
     }
 
@@ -30,46 +35,45 @@ public class Factura {
     }
 
     public void añadirProducto(Producto producto) {
-        Iterador iterador = listaProductos.getIterador();
+        Iterator<Producto> iterador = listaProductos.iterator();
         boolean repetido = false;
 
-        while (!repetido && iterador.hasNext()) {
+        while (iterador.hasNext() && !repetido) {
             Producto auxiliar = iterador.next();
             if (auxiliar.equals(producto)) {
-                auxiliar.setUnidades(auxiliar.getUnidades() + producto.getUnidades());
+                auxiliar.setUnidades(producto.getUnidades() + auxiliar.getUnidades());
                 repetido = true;
             }
         }
         if (!repetido) {
-            listaProductos.insertar(producto);
+            listaProductos.add(producto);
         }
     }
 
     public void mostrar() {
-        Iterador iterador = listaProductos.getIterador();
+        Iterator<Producto> iterador = listaProductos.iterator();
 
         System.out.println("## FACTURA de: " + dni + "\tFecha: " + fecha);
         while (iterador.hasNext()) {
-            Producto auxiliar = iterador.next();
-            auxiliar.mostrar();
+            Producto aux = iterador.next();
+            aux.mostrar();
         }
         System.out.println("Importe Total: " + importeTotal());
     }
 
     public float importeTotal() {
-        Iterador iterador = listaProductos.getIterador();
-        float total = 0;
+        Iterator<Producto> iterador = listaProductos.iterator();
 
+        float total = 0f;
         while (iterador.hasNext()) {
-            Producto auxiliar = iterador.next();
-            total += auxiliar.getPrecio() * auxiliar.getUnidades();
+            Producto aux = iterador.next();
+            total += aux.getPrecio() * aux.getUnidades();
         }
-
         return total;
     }
 
     public int eliminarProducto(Producto producto) {
-        Iterador iterador = listaProductos.getIterador();
+        Iterator<Producto> iterador = listaProductos.iterator();
         boolean encontrado = false;
         int unidades = 0;
 
@@ -80,7 +84,7 @@ public class Factura {
             if (encontrado) {
                 if (producto.getUnidades() >= auxiliar.getUnidades()) {
                     unidades = auxiliar.getUnidades();
-                    listaProductos.borrar(auxiliar);
+                    listaProductos.remove(auxiliar);
                 } else {
                     unidades = auxiliar.getUnidades() - producto.getUnidades();
                     auxiliar.setUnidades(unidades);
@@ -90,14 +94,14 @@ public class Factura {
         return unidades;
     }
 
-    public ListaOrdinal mayoresPrecios(float precio) {
-        ListaOrdinal lista = new ListaOrdinal();
-        Iterador iterador = listaProductos.getIterador();
+    public LinkedList<Producto> mayoresPrecios(float precio) {
+        LinkedList<Producto> lista = new LinkedList<Producto>();
+        Iterator<Producto> iterador = listaProductos.iterator();
 
         while (iterador.hasNext()) {
-            Producto auxiliar = iterador.next();
-            if (auxiliar.getPrecio() > precio) {
-                lista.insertar(auxiliar);
+            Producto producto = iterador.next();
+            if (producto.getPrecio() > precio) {
+                lista.add(producto);
             }
         }
         return lista;
