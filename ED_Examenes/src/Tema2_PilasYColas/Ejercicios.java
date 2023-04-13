@@ -77,4 +77,21 @@ public class Ejercicios {
         }
         return pila;
     }
+
+    // Ejercicio 2 pilas
+    private void eliminarDatoPila(Pila pila, int dato) {
+        int elem;
+        if (!pila.vacia()) {
+            elem = pila.desapilar();
+            if (elem != dato) {
+                eliminarDatoPila(pila, dato);
+                pila.apilar(elem);
+            }
+        }
+    }
+
+    public void apilarReorganizable(Pila pila, int dato) {
+        eliminarDatoPila(pila, dato);
+        pila.apilar(dato);
+    }
 }
