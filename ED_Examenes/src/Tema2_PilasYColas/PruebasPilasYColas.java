@@ -22,6 +22,15 @@ public class PruebasPilasYColas {
         miPila.mostrar();
         Pila pares = ejercicios.quitarPosicionesPares(miPila);
         pares.mostrar();
+
+        // Ejercicio 1 pilas
+        miPila = new Pila();
+        miPila.apilar(1);
+        miPila.apilar(2);
+        miPila.apilar(3);
+        miPila.mostrar();
+        miPila = ejercicios.repetirPila(miPila, 2);
+        miPila.mostrar();
     }
 
 

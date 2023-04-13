@@ -58,4 +58,23 @@ public class Ejercicios {
             return resultado;
         }
     }
+
+    // Ejercicio 1 pilas
+
+    /**
+     * Repite la misma pila n veces
+     * @param pila
+     * @param n Veces que se repite cada elemento
+     * @return La misma pila en la que cada elemento de la pila original se repite n veces
+     */
+    public Pila repetirPila(Pila pila, int n){
+        int dato = pila.desapilar();
+        if (!pila.vacia()) {
+            pila = repetirPila(pila, n);
+        }
+        for (int i = 0; i < n; i++){
+            pila.apilar(dato);
+        }
+        return pila;
+    }
 }
