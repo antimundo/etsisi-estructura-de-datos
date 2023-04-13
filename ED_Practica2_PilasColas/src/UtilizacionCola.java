@@ -81,7 +81,6 @@ public class UtilizacionCola {
     /**
      * Método que recibe una cola y una lista de etiquetas. Comprueba si todas las etiquetas
      * de la cola están balanceadas (cada etiqueta de apertura se corresponde con una de cierre)
-     *
      * @param cola  que contiene las etiquetas extraídas de una página html
      * @param lista contiene las etiquetas que queremos analizar.
      * @return verdadero si las etiquetas están balanceadas, falso en caso contrario
