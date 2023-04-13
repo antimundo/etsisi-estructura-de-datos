@@ -1,5 +1,7 @@
 package Tema2_PilasYColas;
 
+import Tema3_Listas.ListaOrdinal;
+
 public class PruebasPilasYColas {
     public static void main(String[] args) {
         // Primer Parcial - 25 de Marzo de 2022 - Ejercicio 1
@@ -10,6 +12,16 @@ public class PruebasPilasYColas {
         miPila.mostrar();
         Ejercicios ejercicios = new Ejercicios();
         System.out.println("comprobarOrdenacion(miPila): " + ejercicios.comprobarOrdenacion(miPila));
+
+        // Segundo Parcial - 25 de Marzo de 2022 - Ejercicio 2
+        System.out.println("quitarPosicionesPares(miPila): ");
+        miPila = new Pila();
+        miPila.apilar(1);
+        miPila.apilar(2);
+        miPila.apilar(3);
+        miPila.mostrar();
+        Pila pares = ejercicios.quitarPosicionesPares(miPila);
+        pares.mostrar();
     }
 
 
