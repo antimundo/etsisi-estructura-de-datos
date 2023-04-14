@@ -115,7 +115,7 @@ public class Ejercicios {
         return resultado;
     }
 
-    // Ejercicio 4
+    // Ejercicio 4 pilas
     public int eliminarPosicionFondo(Pila pila){
         return eliminarPosicionFondo(pila, 0);
     }
@@ -136,7 +136,7 @@ public class Ejercicios {
         return resultado;
     }
 
-    // Ejercicio 5
+    // Ejercicio 5 pilas
     public void moverElementoFondo(Pila pila){
         if (!pila.vacia())
             pila.apilar(devolverFondo(pila));
@@ -153,5 +153,50 @@ public class Ejercicios {
             }
         }
         return fondo;
+    }
+
+    // Ejercicio 6 pilas
+    public void hacerPilaCapicua (Pila pila) {
+        if (!pila.vacia()) {
+            int dato = pila.desapilar();
+            pila.apilar(dato);
+            hacerPilaCapicua(pila);
+            pila.apilar(dato);
+        }
+    }
+
+    // Ejercicio 1 colas
+    public void invertirCola(Cola cola){
+        if (cola.vacia()){
+            int dato = cola.desencolar();
+            invertirCola(cola);
+            cola.encolar(dato);
+        }
+    }
+
+    // Ejercicio 2 colas
+    public int posicionEnCola(Cola cola, int dato){
+        int resultado = -1;
+        for (int i = 0; i < cola.getNumElementos(); i++){
+            int elemento = cola.desencolar();
+            cola.encolar(elemento);
+            if (elemento == dato && resultado == -1)
+                resultado = i;
+        }
+        return resultado;
+    }
+
+    // Ejercicio 3 colas
+    Cola mezclarColas(Cola cola1, Cola cola2){
+        Cola resultado = new Cola();
+        while (!cola1.vacia() && !cola2.vacia()){
+            resultado.encolar(cola1.desencolar());
+            resultado.encolar(cola2.desencolar());
+        }
+        while (!cola1.vacia())
+            resultado.encolar(cola1.desencolar());
+        while (!cola2.vacia())
+            resultado.encolar(cola2.desencolar());
+        return  resultado;
     }
 }
