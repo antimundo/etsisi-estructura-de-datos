@@ -114,4 +114,25 @@ public class Ejercicios {
         }
         return resultado;
     }
+
+    // Ejercicio 4
+    public int eliminarPosicionFondo(Pila pila){
+        return eliminarPosicionFondo(pila, 0);
+    }
+    private int eliminarPosicionFondo(Pila pila, int posicion){
+        int resultado = 0;
+        if (!pila.vacia()){
+            int dato = pila.desapilar();
+            posicion++;
+            if (!pila.vacia())
+                resultado = eliminarPosicionFondo(pila, posicion);
+            else resultado = dato;
+            if (posicion != resultado)
+                pila.apilar(dato);
+
+            posicion = eliminarPosicionFondo(pila, posicion);
+            pila.apilar(dato);
+        }
+        return resultado;
+    }
 }
