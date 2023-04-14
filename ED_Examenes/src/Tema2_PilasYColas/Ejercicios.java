@@ -135,4 +135,23 @@ public class Ejercicios {
         }
         return resultado;
     }
+
+    // Ejercicio 5
+    public void moverElementoFondo(Pila pila){
+        if (!pila.vacia())
+            pila.apilar(devolverFondo(pila));
+    }
+    private int devolverFondo(Pila pila){
+        int fondo = 0;
+        if (!pila.vacia()){
+            int dato = pila.desapilar();
+            if (pila.vacia()){
+                fondo = dato;
+            } else {
+                fondo = devolverFondo(pila);
+                pila.apilar(dato);
+            }
+        }
+        return fondo;
+    }
 }

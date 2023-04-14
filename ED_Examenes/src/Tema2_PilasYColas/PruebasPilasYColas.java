@@ -43,6 +43,15 @@ public class PruebasPilasYColas {
         ejercicios.apilarReorganizable(miPila, 3);
         miPila.mostrar();
 
+        // Ejercicio 5 pilas
+        System.out.println("Ejercicio 5");
+        miPila = new Pila();
+        miPila.apilar(1);
+        miPila.apilar(2);
+        miPila.apilar(3);
+        miPila.mostrar();
+        ejercicios.moverElementoFondo(miPila);
+        miPila.mostrar();
     }
 
 
