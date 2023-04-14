@@ -94,4 +94,24 @@ public class Ejercicios {
         eliminarDatoPila(pila, dato);
         pila.apilar(dato);
     }
+
+    // Ejercicio 3 pilas
+    public int comprobarFondo(Pila pila){
+        return comprobarFondo(pila);
+    }
+    private int comprobarFondo(Pila pila, int contador) {
+        int resultado = 0;
+        if (!pila.vacia()){
+            int elemento = pila.desapilar();
+            contador++;
+            if (!pila.vacia())
+                resultado = comprobarFondo(pila, contador);
+            else if (contador == elemento)
+                resultado = 0;
+            else if (contador < elemento)
+                resultado = 1;
+            pila.apilar(elemento);
+        }
+        return resultado;
+    }
 }
