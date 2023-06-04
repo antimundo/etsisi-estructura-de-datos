@@ -33,12 +33,12 @@ public class Prueba {
         System.out.println("----------------------------------------------------");
 
         System.out.println("\nAPARTADO 2.2.2. PRUEBAS DE amigosIndirectos.");
-        g.mostrarAmigosIndirectos("José");
+        g.mostrarAmigosIndirectos("Alicia");
         System.out.println("----------------------------------------------------");
 
         System.out.println("\nAPARTADO 2.2.3. PRUEBAS DE noSonAmigos.");
-        System.out.println("Son amigos: " + g.noSonAmigos(contactos[0], contactos[1]));
-        System.out.println("Son amigos: " + g.noSonAmigos(contactos[1], contactos[2]));
+        System.out.println("¿" + contactos[0].getNombre() + "(0) y " + contactos[1].getNombre() + "(1) no son amigos?: " + g.noSonAmigos(contactos[0], contactos[1]));
+        System.out.println("¿" + contactos[0].getNombre() + "(0) y " + contactos[2].getNombre() + "(2) no son amigos?: " + g.noSonAmigos(contactos[1], contactos[2]));
         System.out.println("----------------------------------------------------");
 
         System.out.println("\nAPARTADO 2.2.4. PRUEBAS DE mostrarMiembrosSiAmigos.");

@@ -140,13 +140,14 @@ public class AmigosETSISI {
         }
         else {
             boolean[] visitados = new boolean[miREd.getNumVertices()];
-            visitados = inicia_Visitados(visitados);
             int verticeOriginal = devuelvePosNombre(nombre);
+            System.out.print("Todos los amigos (indirectos y directos) de " + nombre + "(" + verticeOriginal + ") son: ");
+            visitados = inicia_Visitados(visitados);
             marcarConexionesComoVisitadas(verticeOriginal, visitados);
-            System.out.println();
+            System.out.println("\nLos amigos (directos) de " + nombre + "(" + verticeOriginal + ") son:");
             for (int i = 0; i < miREd.getNumVertices(); i++){
                 if (visitados[i] && !miREd.existeArista(verticeOriginal, i) && i != verticeOriginal){
-                    System.out.println(contactos[verticeOriginal].getNombre() + " es amigo indirecto de " + contactos[i].getNombre());
+                    System.out.println(i + ": " + contactos[i].getNombre());
                 }
             }
         }
