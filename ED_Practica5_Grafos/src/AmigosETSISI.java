@@ -175,8 +175,7 @@ public class AmigosETSISI {
         else {
             boolean[] visitados = new boolean[miREd.getNumVertices()];
             visitados = inicia_Visitados(visitados);
-            int indicePersona = devuelvePosNombre(p.getNombre());
-            marcarConexionesComoVisitadas(indicePersona, visitados);
+            marcarConexionesComoVisitadas(devuelvePosNombre(p.getNombre()), visitados);
             if (visitados[devuelvePosNombre(p1.getNombre())]){
                 System.out.println("Lista de amigos de: " + p.getNombre() + " y " + p1.getNombre());
                 for (int i = 0; i < miREd.getNumVertices(); i++){

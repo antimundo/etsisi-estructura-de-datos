@@ -122,16 +122,16 @@ public class ArbolBinarioBusqueda {
         return getNumIntermedios(claveMinimo, claveMaximo, raiz);
     }
 
-    private int getNumIntermedios(int claveMinimo, int claveMaximo, NodoArbol arbol) {
-        if (arbol == null) {
+    private int getNumIntermedios(int claveMinimo, int claveMaximo, NodoArbol nodo) {
+        if (nodo == null) {
             return 0;
         } else {
             int contador = 0;
-            if (arbol.getDato() != null && arbol.getDato().getMatricula() > claveMinimo && arbol.getDato().getMatricula() < claveMaximo) {
+            if (nodo.getDato() != null && nodo.getDato().getMatricula() > claveMinimo && nodo.getDato().getMatricula() < claveMaximo) {
                 contador++;
             }
-            contador += getNumIntermedios(claveMinimo, claveMaximo, arbol.getIzquierdo());
-            contador += getNumIntermedios(claveMinimo, claveMaximo, arbol.getDerecho());
+            contador += getNumIntermedios(claveMinimo, claveMaximo, nodo.getIzquierdo());
+            contador += getNumIntermedios(claveMinimo, claveMaximo, nodo.getDerecho());
             return contador;
         }
     }

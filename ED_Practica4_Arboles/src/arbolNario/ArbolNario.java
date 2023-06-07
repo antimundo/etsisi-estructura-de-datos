@@ -19,10 +19,10 @@ public class ArbolNario {
 		mostrarProfundidadRecursivo(raiz);
 		System.out.println();
 	}
-	private void mostrarProfundidadRecursivo(NodoArbolNario arbol){
-		if (arbol != null){
-			System.out.print(arbol.getDato() + " ");
-			ListaNodosArbolNario hijos = arbol.getHijos();
+	private void mostrarProfundidadRecursivo(NodoArbolNario nodo){
+		if (nodo != null){
+			System.out.print(nodo.getDato() + " ");
+			ListaNodosArbolNario hijos = nodo.getHijos();
 			IteradorAdelanteListaNodosArbolNario it = hijos.getIteradorAdelante();
 			while (it.hasNext()){
 				mostrarProfundidadRecursivo(it.next());
@@ -37,13 +37,13 @@ public class ArbolNario {
 		mostrarProfundidadIterativo(raiz);
 		System.out.println();
 	}
-	private void mostrarProfundidadIterativo(NodoArbolNario arbol){
+	private void mostrarProfundidadIterativo(NodoArbolNario nodo){
 		PilaNodosArbolNario pilaAux = new PilaNodosArbolNario();
-		pilaAux.apilar(arbol);
+		pilaAux.apilar(nodo);
 		while (!pilaAux.vacia()){
-			arbol = pilaAux.desapilar();
-			System.out.print(arbol.getDato() + " ");
-			ListaNodosArbolNario hijos = arbol.getHijos();
+			nodo = pilaAux.desapilar();
+			System.out.print(nodo.getDato() + " ");
+			ListaNodosArbolNario hijos = nodo.getHijos();
 			IteradorAtrasListaNodosArbolNario it = hijos.getIteradorAtras();
 			while (it.hasPrevious()){
 				pilaAux.apilar(it.previous());
@@ -59,13 +59,13 @@ public class ArbolNario {
 		System.out.println();
 	}
 
-	private void mostrarAmplitud(NodoArbolNario arbol){
+	private void mostrarAmplitud(NodoArbolNario nodo){
 		ColaNodosArbolNario colaAux = new ColaNodosArbolNario();
-		colaAux.encolar(arbol);
+		colaAux.encolar(nodo);
 		while (!colaAux.vacia()){
-			arbol = colaAux.desencolar();
-			System.out.print(arbol.getDato() + " ");
-			ListaNodosArbolNario hijos = arbol.getHijos();
+			nodo = colaAux.desencolar();
+			System.out.print(nodo.getDato() + " ");
+			ListaNodosArbolNario hijos = nodo.getHijos();
 			IteradorAdelanteListaNodosArbolNario it = hijos.getIteradorAdelante();
 			while (it.hasNext()){
 				colaAux.encolar(it.next());
